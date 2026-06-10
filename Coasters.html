@@ -1,0 +1,500 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coasters</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<style>
+header.sticky-header {
+  position: sticky;
+  top: 0; 
+  z-index: 1000;
+  background-color:#0F2647;
+  padding: 10px 0;
+  width: 100%;
+}
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+.menu li {
+position: relative;
+margin: 0 15px;
+}
+.menu a {
+  text-decoration: none;
+  color: white;
+  padding: 10px 15px;
+display: inline-block;
+  transition: background-color 0.3s;
+  color:#FFE0DF;
+}
+.menu a:hover {
+  background-color: #0F2647;
+  border-radius: 5px;
+}
+header.sticky-header {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.menu a.active {
+  border-bottom: 2px solid white;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #0F2647;
+  color:#FFE0DF;
+}
+li {
+  float: left;
+}
+li a {
+  display: block;
+  color: #FFE0DF;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+home{
+  text-align:"center";
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+icons{
+  padding:20 60 px;
+  margin:12 15px;
+  border-radius: 5px;
+  border-style: solid;
+}
+#img1{
+clip-path: circle(50%);
+}
+.product-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.product {
+    background-color: #f4f4f4;
+    padding: 5px;
+    border: 1px solid ;
+    border-radius: 2px;
+    width: 25%;
+    text-align: center;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.product img {
+  transition: transform 0.3s;
+}
+.product:hover img {
+  transform: scale(1.1);
+}
+.add-to-cart {
+  background-color: #0F2647;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+.add-to-cart:hover {
+  background-color: #a3beeb;
+color: #785148;
+}
+.product h2{
+color:#5a2d82;
+}
+.product p{
+color:#5a2d82;
+}
+.footer {
+            background-color:#0F2647;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top:0 px;
+        }
+        .footer a {
+            color: #d8e7ff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .footer .social-icons {
+            margin-top: 15px;
+        }
+        .footer .social-icons a {
+            color: white;
+            font-size: 20px;
+            margin: 0 10px;
+        }
+        .footer .social-icons a:hover {
+            color: #d8e7ff";
+        }
+        .newsletter {
+            margin-top: 20px;
+        }
+        .newsletter input {
+            padding: 8px;
+            width: 250px;
+            border: none;
+            border-radius: 5px;
+        }
+        .newsletter button {
+            background-color: #d8e7ff;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .newsletter button:hover {
+            background-color: #d8e7ff;
+        }
+        .cart-icon {
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            position: relative;
+            margin-right: 20px;
+        }
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background: red;
+            color: white;
+            font-size: 12px;
+            padding: 3px 8px;
+            border-radius: 50%;
+            display: none;
+        }
+
+        .cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 350px; /* Adjust width as needed */
+    height: 100vh; /* Full height */
+    background: #d8e7ff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 9999; /* Ensures it covers the navbar */
+}
+.cart-sidebar.open {
+    transform: translateX(0);
+}
+        .cart-sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+			color:black;
+        }
+		.cart-sidebar p{
+		    color:black;
+		}
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .cart-item .remove-btn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 12px;
+            border-radius: 5px;
+        }
+        .checkout-btn {
+            background-color:#0F2647;
+            color: white;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+            text-transform: uppercase;
+        }
+        .checkout-btn:hover {
+            background-color:#a3beeb;
+        }
+        .cart-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: red;
+    color: white;
+    border: none;
+    font-size: 18px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10000;
+}
+
+.cart-close-btn:hover {
+    background: darkred;
+}
+
+</style>
+</head>
+<body style="color:white;;background-color:#d8e7ff">
+<hr style="border: 1px solid #333; width:100%; margin: 0 auto;">
+<header class="sticky-header">
+<nav>
+<ul><li><a class=home href="T&T.html">TWIST AND THREADS</a></li>
+<ul class= "menu">
+<li><a href="Clothes.html">Clothes</a></li>
+<li><a href="Bags.html">Bags</a></li>
+<li><a href="Kids.html">Kids</a></li>
+<li><a href="Cushions.html">Cushions</a></li>
+<li><a href="Coasters.html">Coasters</a></li>
+<li><a href="Wall Decor.html">Wall Decors</a></li>
+<div class="cart-icon" onclick="toggleCart()">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+        </div>
+</ul>
+</nav>
+</header>
+<hr style="border: 1px solid #333; width:100%; margin: 0 auto;">
+
+<br><img src="images/Coasters/coastersbg.jpg" width=1248 height=480>
+
+<div class="product-container">
+<div class="product">
+<img src="images/Coasters/im1.png" width=280 height=300>
+<h2>Strawberry Delight Coaster</h2>
+<p>₹1,000</p>
+<button class="add-to-cart" onclick="addToCart('Strawberry Delight Table Runner ', 1000, 'images/Coasters/im1.png')">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="images/Coasters/im2.png" width=280 height=300>
+<h2>Strawberry Delight Coaster</h2>
+<p>₹1,000</p>
+<button class="add-to-cart" onclick="addToCart('Strawberry Blossom Coaster', 1000, 'images/Coasters/im2.png')">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="images/Coasters/im3.png" width=280 height=300>
+<h2>Vintage Floral Coaster</h2>
+<p>₹1,200</p>
+<button class="add-to-cart" onclick="addToCart('Vintage Floral Coaster', 1200, 'images/Coasters/im3.png')">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="images/Coasters/im12.png" width=280 height=300>
+<h2>Daisy Charm Coaster </h2>
+<p>₹1,250</p>
+<button class="add-to-cart" onclick="addToCart('Daisy Charm Coaster ', 1250, 'images/Coasters/im12.png')">Add to Cart</button>
+</div>
+</div>
+
+<div class="product-container">
+<div class="product">
+<img src="images/Coasters/im5.png" width=280 height=300>
+<h2>Rainbow Heart Coaster</h2>
+<p>₹1,200</p>
+<button class="add-to-cart" onclick="addToCart('Rainbow Heart Coaster', 1200, 'images/Coasters/im5.png')">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="images/Coasters/im6.png" width=280 height=300>
+<h2>Patriotic Heart Coaster</h2>
+<p>₹1,500</p>
+<button class="add-to-cart" onclick="addToCart('Patriotic Heart Coaster',1500, 'images/Coasters/im6.png')">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="images/Coasters/im7.png" width=280 height=300>
+<h2>Valentine Love Coaster</h2>
+<p>₹1,350</p>
+<button class="add-to-cart" onclick="addToCart('Valentine Love Coaster', 1350, 'images/Coasters/im7.png')">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="images/Coasters/im11.png" width=280 height=300>
+<h2>Rustic Elegance Coaster</h2>
+<p>₹1,250</p>
+<button class="add-to-cart" onclick="addToCart('Rustic Elegance Coaster', 1250, 'images/Coasters/im11.png')">Add to Cart</button>
+</div>
+</div>
+
+<div class="product-container">
+<div class="product">
+<img src="images/Coasters/im4.png" width=280 height=300>
+<h2>Blue Harmony Coaster</h2>
+<p>₹1,400</p>
+<button class="add-to-cart" onclick="addToCart('Blue Harmony Granny Square', 1400, 'images/Coasters/im4.png')">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="images/Coasters/im8.png" width=280 height=300>
+<h2>Pastel Bloom Coaster</h2>
+<p>₹1,500</p>
+<button class="add-to-cart" onclick="addToCart('Pastel Bloom Coaster', 1500, 'images/Coasters/im8.png')">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="images/Coasters/im9.png" width=280 height=300>
+<h2>Soft Petal Coaster</h2>
+<p>₹1,150</p>
+<button class="add-to-cart" onclick="addToCart('Soft Petal Coaster', 1150, 'images/Coasters/im9.png')">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="images/Coasters/im10.png" width=280 height=300>
+<h2>Lace Blossom Coaster </h2>
+<p>₹1,200</p>
+<button class="add-to-cart" onclick="addToCart('Lace Blossom Coaster', 1200, 'images/Coasters/im10.png')">Add to Cart</button>
+</div>
+</div>
+
+<div class="product-container">
+<div class="product">
+<img src="images/Coasters/im13.png" width=280 height=300>
+<h2>Rose Bloom Coaster</h2>
+<p>₹1,050</p>
+<button class="add-to-cart" onclick="addToCart('Rose Bloom Coaster', 1050, 'images/Coasters/im13.png')">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="images/Coasters/im14.png" width=280 height=300>
+<h2>Blush Petal Coaster</h2>
+<p>₹1,100</p>
+<button class="add-to-cart" onclick="addToCart('Blush Petal Coaster', 1100, 'images/Coasters/im14.png')">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="images/Coasters/im15.png" width=280 height=300>
+<h2>Vintage Elegance Coaster </h2>
+<p>₹1,150</p>
+<button class="add-to-cart" onclick="addToCart('Vintage Elegance Coaster ', 1150, 'images/Coasters/im15.png')">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="images/Coasters/im16.png" width=280 height=300>
+<h2>Classic Lace Coaster</h2>
+<p>₹1,200</p>
+<button class="add-to-cart" onclick="addToCart('Classic Lace Coaster', 1200, 'images/Coasters/im6.png')">Add to Cart</button>
+</div>
+</div>
+
+<hr style="border: 1px solid #333; width:100%; margin: 0 auto;">
+    <div class="footer">
+        <p>&copy; 2025 TWIST AND THREADS. All Rights Reserved.</p>
+        <p>
+            <a href="#">About Us</a> |
+            <a href="#">Contact</a> |
+            <a href="#">Privacy Policy</a> |
+            <a href="#">FAQ</a> |
+            <a href="#">Returns</a>
+        </p>
+        <div class="social-icons">
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+        <div class="newsletter">
+            <p>Subscribe to our Newsletter:</p>
+            <input type="email" placeholder="Enter your email">
+            <button>Subscribe</button>
+        </div>
+    </div>
+<hr style="border: 1px solid #333; width:100%; margin: 0 auto;">
+
+<div class="cart-sidebar">
+    <h2>Shopping Cart</h2>
+    <hr style="border: 1px solid #333; width:100%; margin: 0 auto;">
+    <div id="cart-items"></div>
+    <p><strong>Total: ₹<span id="cart-total">0.00</span></strong></p> <!-- Total Price Display -->
+    <button class="checkout-btn" onclick="checkout()">Checkout</button>
+    <button class="cart-close-btn">✖</button>
+
+</div>
+<script>
+    let cart = [];
+
+    function toggleCart() {
+        document.querySelector('.cart-sidebar').classList.toggle('open');
+    }
+
+    function addToCart(name, price, img) {
+    price = parseFloat(price); // Ensure it's a number
+    cart.push({ name, price, img });
+    updateCart();
+}
+
+
+    function removeItem(index) {
+        cart.splice(index, 1);
+        updateCart();
+    }
+
+   function updateCart() {
+    let cartItems = document.getElementById('cart-items');
+    let totalPrice = 0;
+    cartItems.innerHTML = "";
+
+    cart.forEach((item, index) => {
+        totalPrice += item.price;
+        cartItems.innerHTML += `
+            <div class="cart-item">
+                <img src="${item.img}" alt="${item.name}">
+                <div>
+                    <p>${item.name}</p>
+                    <p class="price">₹${item.price.toFixed(2)}</p>
+                </div>
+                <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+            </div>
+        `;
+    });
+
+    document.getElementById('cart-total').textContent = totalPrice.toFixed(2); // Update total price
+    document.querySelector('.cart-count').textContent = cart.length;
+    document.querySelector('.cart-count').style.display = cart.length > 0 ? 'block' : 'none';
+}
+
+
+
+    function checkout() {
+        if (cart.length === 0) {
+            alert("Your cart is empty!");
+        } else {
+            alert("Checkout Successful!");
+            cart = [];
+            updateCart();
+        }
+    }
+    document.querySelector(".cart-close-btn").addEventListener("click", function() {
+    document.querySelector(".cart-sidebar").classList.remove("open");
+});
+
+</script>
+</body>
+</html>
